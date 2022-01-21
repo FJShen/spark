@@ -1288,7 +1288,7 @@ class CodegenContext extends Logging {
    def registerComment(
        text: => String,
        placeholderId: String = "",
-       force: Boolean = false): Block = {
+       force: Boolean = true): Block = {
     if (force || SQLConf.get.codegenComments) {
       val name = if (placeholderId != "") {
         assert(!placeHolderToComments.contains(placeholderId))
