@@ -111,3 +111,9 @@ spark-warehouse/
 
 # For Node.js
 node_modules
+
+#for vscode
+.bloop/
+.vscode/
+.metals/
+project/
