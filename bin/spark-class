@@ -107,5 +107,6 @@ if [ $LAUNCHER_EXIT_CODE != 0 ]; then
   exit $LAUNCHER_EXIT_CODE
 fi
 
+#CMD=("${CMD[@]:0:1}" "-agentlib:jdwp=transport=dt_socket,address=5005,server=y,suspend=y" "${CMD[@]:1:$LAST}")
 CMD=("${CMD[@]:0:$LAST}")
 exec "${CMD[@]}"

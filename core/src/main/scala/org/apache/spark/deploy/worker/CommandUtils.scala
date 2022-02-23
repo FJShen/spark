@@ -98,7 +98,10 @@ object CommandUtils extends Logging {
       command.classPathEntries ++ classPath,
       Seq.empty, // library path already captured in environment variable
       // filter out auth secret from java options
-      command.javaOpts.filterNot(_.startsWith("-D" + SecurityManager.SPARK_AUTH_SECRET_CONF)))
+      command.javaOpts.filterNot(_.startsWith("-D" + SecurityManager.SPARK_AUTH_SECRET_CONF))
+        // add SPARK_EXECUTOR_OPTS to enable executor debugging
+        ++ env.filterKeys(_.equals("SPARK_EXECUTOR_OPTS")).toSeq.map(_._2)
+    )
   }
 
   /** Spawn a thread that will redirect a given stream to a file */
